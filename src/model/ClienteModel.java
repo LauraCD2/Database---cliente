@@ -9,101 +9,103 @@ package model;
  *
  * @author LAURA CAMILA
  */
+import java.sql.Date;
+
 public class ClienteModel {
-    private String cli_tag;
-    private String cli_nombre;
-    private String cli_email;
-    private int    cli_celular;
-    private char   cli_clave;
-    private String cli_fecha_nto;
+    private String tag;
+    private String nombre;
+    private String email;
+    private long   celular;
+    private char   clave;
+    private Date fecha_nto;
     
     /**
      * Builder for table internal management
-     * @param cli_tag
-     * @param cli_nombre
-     * @param cli_email
-     * @param cli_celular
-     * @param cli_clave
-     * @param cli_fecha_nto 
+     * @param tag
+     * @param nombre
+     * @param email
+     * @param celular
+     * @param clave
+     * @param fecha_nto 
      */
-    public ClienteModel(String cli_tag, String cli_nombre, 
-                        String cli_email, int cli_celular, 
-                        char cli_clave, String cli_fecha_nto){
-        this.cli_tag       = cli_tag;
-        this.cli_nombre    = cli_nombre;
-        this.cli_email     = cli_email;
-        this.cli_celular   = cli_celular;
-        this.cli_clave     = cli_clave;
-        this.cli_fecha_nto = cli_fecha_nto;
+    public ClienteModel(String tag, String nombre, 
+                        String email, int celular, 
+                        char clave, String fecha_nto){
+        this.tag       = tag;
+        this.nombre    = nombre;
+        this.email     = email;
+        this.celular   = celular;
+        this.clave     = clave;
+        this.fecha_nto = fecha_nto;
     }
 
     /**
-     * @return the cli_tag
+     * @return the tag
      */
-    public String getCli_tag() {
-        return cli_tag;
+    public String getTag() {
+        return tag;
     }
 
     /**
-     * @param cli_tag the cli_tag to set
+     * @param tag the tag to set
      */
-    public void setCli_tag(String cli_tag) {
-        this.cli_tag = cli_tag;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     /**
-     * @return the cli_nombre
+     * @return the nombre
      */
-    public String getCli_nombre() {
-        return cli_nombre;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
-     * @return the cli_email
+     * @return the email
      */
-    public String getCli_email() {
-        return cli_email;
+    public String getEmail() {
+        return email;
     }
 
     /**
-     * @param cli_email the cli_email to set
+     * @param email the email to set
      */
-    public void setCli_email(String cli_email) {
-        this.cli_email = cli_email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
-     * @return the cli_celular
+     * @return the celular
      */
-    public int getCli_celular() {
-        return cli_celular;
+    public int getCelular() {
+        return celular;
     }
 
     /**
-     * @param cli_celular the cli_celular to set
+     * @param celular the celular to set
      */
-    public void setCli_celular(int cli_celular) {
-        this.cli_celular = cli_celular;
+    public void setCelular(int celular) {
+        this.celular = celular;
     }
 
     /**
-     * @return the cli_clave
+     * @return the clave
      */
-    public char getCli_clave() {
-        return cli_clave;
+    public char getClave() {
+        return clave;
     }
 
     /**
-     * @param cli_clave the cli_clave to set
+     * @param clave the clave to set
      */
-    public void setCli_clave(char cli_clave) {
-        this.cli_clave = cli_clave;
+    public void setClave(char clave) {
+        this.clave = clave;
     }
 
     /**
-     * @return the cli_fecha_nto
+     * @return the fecha_nto
      */
-    public String getCli_fecha_nto() {
-        return cli_fecha_nto;
+    public String getFecha_nto() {
+        return fecha_nto;
     }
 }
