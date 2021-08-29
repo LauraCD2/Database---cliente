@@ -17,7 +17,7 @@ public class ClienteModel {
     private String email;
     private long   celular;
     private char   clave;
-    private Date fecha_nto;
+    private Date   fecha_nto;
     
     /**
      * Builder for table internal management
