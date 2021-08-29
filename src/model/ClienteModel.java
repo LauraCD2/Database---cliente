@@ -15,7 +15,7 @@ public class ClienteModel {
     private String cli_email;
     private int    cli_celular;
     private char   cli_clave;
-    private String   cli_fecha_nto;
+    private String cli_fecha_nto;
     
     /**
      * Builder for table internal management
