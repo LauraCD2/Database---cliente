@@ -29,7 +29,7 @@ public class ClienteModel {
      * @param fecha_nto 
      */
     public ClienteModel(String tag, String nombre, 
-                        String email, long celular, 
+                        String email, int celular, 
                         String clave, Date fecha_nto){
         this.tag       = tag;
         this.nombre    = nombre;
