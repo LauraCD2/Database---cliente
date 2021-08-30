@@ -16,7 +16,7 @@ public class ClienteModel {
     private String nombre;
     private String email;
     private long   celular;
-    private char   clave;
+    private String   clave;
     private Date   fecha_nto;
     
     /**
@@ -30,7 +30,7 @@ public class ClienteModel {
      */
     public ClienteModel(String tag, String nombre, 
                         String email, int celular, 
-                        char clave, String fecha_nto){
+                        String clave, Date fecha_nto){
         this.tag       = tag;
         this.nombre    = nombre;
         this.email     = email;
@@ -77,35 +77,35 @@ public class ClienteModel {
     /**
      * @return the celular
      */
-    public int getCelular() {
+    public long getCelular() {
         return celular;
     }
 
     /**
      * @param celular the celular to set
      */
-    public void setCelular(int celular) {
+    public void setCelular(long celular) {
         this.celular = celular;
     }
 
     /**
      * @return the clave
      */
-    public char getClave() {
+    public String getClave() {
         return clave;
     }
 
     /**
      * @param clave the clave to set
      */
-    public void setClave(char clave) {
+    public void setClave(String clave) {
         this.clave = clave;
     }
 
     /**
      * @return the fecha_nto
      */
-    public String getFecha_nto() {
+    public Date getFecha_nto() {
         return fecha_nto;
     }
 }
