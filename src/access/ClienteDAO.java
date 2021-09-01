@@ -54,12 +54,9 @@ public class ClienteDAO {
         }
     }
 
-    public void actualizarLibro(ClienteModel cliente) {
+    public void actualizarCliente(ClienteModel cliente) {
     }
 
-    public void eliminarLibroPorTag(String tag) {
-    }
-
-    public void eliminarLibroPorCorreo(String correo) {
+    public void eliminarClientePorTag(String tag) {
     }
 }
