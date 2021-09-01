@@ -20,7 +20,7 @@ public class ClienteModel {
     private Date   fecha_nto;
     
     /**
-     * Builder for table internal management
+     * Constructor for table internal management
      * @param tag
      * @param nombre
      * @param email
