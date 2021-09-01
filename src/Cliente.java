@@ -9,7 +9,7 @@ import view.MainWindow;
 
 /**
  *
- * @author casierrav
+ * @author LAURA CAMILA
  */
 public class Cliente {
     
