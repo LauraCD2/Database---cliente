@@ -21,10 +21,12 @@ public class ConnectionDB {
             String credentials_path = System.getProperty("user.dir") + "/src/utils/db_credentials.json";
             JSONObject jsonObject = (JSONObject)parser.parse(new FileReader(credentials_path));
             
-            String host       = (String)jsonObject.get("db_ip");
-            String port       = (String)jsonObject.get("dp_port");
-            String username   = (String)jsonObject.get("db_user");
-            String password   = (String)jsonObject.get("db_pssword");
+            String tag        = (String)jsonObject.get("tag");
+            String nombre     = (String)jsonObject.get("nombre");
+            String email      = (String)jsonObject.get("email");
+            long celular      = (long)jsonObject.get("celular");
+            String clave      = (String)jsonObject.get("clave");
+            Date fecha_nto    = (Date)jsonObject.get("fecha_nto);
             String schemaName = "basedatosreto4";
             String dbURL      = "jdbc:mysql://"+host+":"+port+"/"+schemaName;
             
