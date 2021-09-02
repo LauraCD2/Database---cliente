@@ -5,14 +5,10 @@
  */
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.ClienteModel;
 import access.ClienteDAO;
-import view.ControlsPanel;
 
 /**
  *
@@ -20,7 +16,7 @@ import view.ControlsPanel;
  */
 public class controladorCliente {
 
-    private ClienteDAO clienteDAO;
+    private ClienteDAO clienteDAO = new ClienteDAO();
 
     public controladorCliente(ClienteDAO clienteDAO) {
         this.clienteDAO = clienteDAO;
@@ -29,13 +25,13 @@ public class controladorCliente {
     public DefaultTableModel consultarClientes() {
         String[] titulos = {"TAG", "NOMBRE", "EMAIL", "TELÉFONO", "NACIMIENTO", "CLAVE"};
         DefaultTableModel tabla = new DefaultTableModel(null, titulos);
-    List<ClienteModel> clientes = ClienteDAO.obtenerClientes();
+    List<ClienteModel> clientes = clienteDAO.obtenerClientes();
     for (ClienteModel cliente : clientes){
             String[] registro = new String[6];
         registro[0] = cliente.getTag();
         registro[1] = cliente.getNombre();
         registro[2] = cliente.getEmail();
-        registro[3] = cliente.getFecha_nto();
+        registro[3] = cliente.getFechaNto().toString();
         registro[4] = cliente.getClave();
         registro[5] = "";
         tabla.addRow(registro);
