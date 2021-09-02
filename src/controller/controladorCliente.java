@@ -48,7 +48,13 @@ public class controladorCliente {
     public void agregarCliente(ClienteModel cliente){
         clienteDAO.agregarCliente(cliente);
     }
-    public void eliminarCliente(String TAG){
-        clienteDAO.eliminarCliente(TAG);
+    public void eliminarClientePorTag(String TAG){
+        clienteDAO.eliminarClientePorTag(TAG);
+    }
+    public void obtenerClientesPorTag(String TAG){
+        clienteDAO.obtenerClientesPorTag(TAG);
+    }
+     public void obtenerClientesPorCorreo(String email){
+        clienteDAO.obtenerClientesPorCorreo(email);
     }
 }
