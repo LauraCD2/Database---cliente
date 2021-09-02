@@ -1,42 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-/**
- *
- * @author LAURA CAMILA
- */
 import java.sql.Date;
 
 public class ClienteModel {
     private String tag;
     private String nombre;
     private String email;
-    private long   celular;
-    private String   clave;
-    private Date   fecha_nto;
+    private long celular;
+    private String clave;
+    private Date fechaNto;
     
     /**
-     * Constructor for table internal management
+     * Constructor for internal management of our table ClienteModel
+     * 
      * @param tag
      * @param nombre
      * @param email
      * @param celular
      * @param clave
-     * @param fecha_nto 
+     * @param fechaNto 
      */
-    public ClienteModel(String tag, String nombre, 
-                        String email, long celular, 
-                        String clave, Date fecha_nto){
-        this.tag       = tag;
-        this.nombre    = nombre;
-        this.email     = email;
-        this.celular   = celular;
-        this.clave     = clave;
-        this.fecha_nto = fecha_nto;
+    public ClienteModel(String tag, String nombre, String email, long celular, String clave, Date fechaNto) {
+        this.tag      = tag;
+        this.nombre   = nombre;
+        this.email    = email;
+        this.celular  = celular;
+        this.clave    = clave;
+        this.fechaNto = fechaNto;
     }
 
     /**
@@ -58,6 +48,13 @@ public class ClienteModel {
      */
     public String getNombre() {
         return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
@@ -103,9 +100,21 @@ public class ClienteModel {
     }
 
     /**
-     * @return the fecha_nto
+     * @return the fechaNto
      */
-    public Date getFecha_nto() {
-        return fecha_nto;
+    public Date getFechaNto() {
+        return fechaNto;
+    }
+
+    /**
+     * @param fechaNto the fechaNto to set
+     */
+    public void setFechaNto(Date fechaNto) {
+        this.fechaNto = fechaNto;
+    }
+    
+    public Object[] toArray(){
+        Object[] data = {tag, nombre, email, celular, fechaNto, clave};
+        return data;
     }
 }
