@@ -29,8 +29,8 @@ public class controladorCliente {
     public DefaultTableModel consultarClientes() {
         String[] titulos = {"TAG", "NOMBRE", "EMAIL", "TELÉFONO", "NACIMIENTO", "CLAVE"};
         DefaultTableModel tabla = new DefaultTableModel(null, titulos);
-    List<Cliente> clientes = ClienteDAO.obtenerClientes();
-    for (Cliente cliente : clientes){
+    List<ClienteModel> clientes = ClienteDAO.obtenerClientes();
+    for (ClienteModel cliente : clientes){
             String[] registro = new String[6];
         registro[0] = cliente.getTag();
         registro[1] = cliente.getNombre();
@@ -42,10 +42,10 @@ public class controladorCliente {
     }
     return tabla ;
 }
-    public void actualizarCliente(Cliente cliente){
+    public void actualizarCliente(ClienteModel cliente){
         clienteDAO.actualizarCliente(cliente);
     }
-    public void agregarCliente(Cliente cliente){
+    public void agregarCliente(ClienteModel cliente){
         clienteDAO.agregarCliente(cliente);
     }
     public void eliminarCliente(String TAG){
