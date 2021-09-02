@@ -25,32 +25,37 @@ public class controladorCliente {
     public DefaultTableModel consultarClientes() {
         String[] titulos = {"TAG", "NOMBRE", "EMAIL", "TELÉFONO", "NACIMIENTO", "CLAVE"};
         DefaultTableModel tabla = new DefaultTableModel(null, titulos);
-    List<ClienteModel> clientes = clienteDAO.obtenerClientes();
-    for (ClienteModel cliente : clientes){
+        List<ClienteModel> clientes = clienteDAO.obtenerClientes();
+        for (ClienteModel cliente : clientes) {
             String[] registro = new String[6];
-        registro[0] = cliente.getTag();
-        registro[1] = cliente.getNombre();
-        registro[2] = cliente.getEmail();
-        registro[3] = cliente.getFechaNto().toString();
-        registro[4] = cliente.getClave();
-        registro[5] = "";
-        tabla.addRow(registro);
+            registro[0] = cliente.getTag();
+            registro[1] = cliente.getNombre();
+            registro[2] = cliente.getEmail();
+            registro[3] = cliente.getFechaNto().toString();
+            registro[4] = cliente.getClave();
+            registro[5] = "";
+            tabla.addRow(registro);
+        }
+        return tabla;
     }
-    return tabla ;
-}
-    public void actualizarCliente(ClienteModel cliente){
+
+    public void actualizarCliente(ClienteModel cliente) {
         clienteDAO.actualizarCliente(cliente);
     }
-    public void agregarCliente(ClienteModel cliente){
+
+    public void agregarCliente(ClienteModel cliente) {
         clienteDAO.agregarCliente(cliente);
     }
-    public void eliminarClientePorTag(String TAG){
+
+    public void eliminarClientePorTag(String TAG) {
         clienteDAO.eliminarClientePorTag(TAG);
     }
-    public void obtenerClientesPorTag(String TAG){
+
+    public void obtenerClientesPorTag(String TAG) {
         clienteDAO.obtenerClientesPorTag(TAG);
     }
-     public void obtenerClientesPorCorreo(String email){
+
+    public void obtenerClientesPorCorreo(String email) {
         clienteDAO.obtenerClientesPorCorreo(email);
     }
 }
