@@ -5,8 +5,6 @@
  */
 package view;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import javax.swing.UIManager;
 import javax.swing.JFrame;
 
@@ -37,8 +35,8 @@ public class MainWindow extends JFrame {
         
         setSize(1040, 720);
         
-       frame.setLocationRelativeTo( null );
-       frame.setVisible(true);
+        frame.setLocationRelativeTo( null );
+        frame.setVisible(true);
         
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
