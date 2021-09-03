@@ -1,31 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import javax.swing.UIManager;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
-
-/**
- *
- * @author LAURA CAMILA
- */
 public class MainWindow extends JFrame {
     
-    public MainWindow(){
+    public MainWindow() {
         initComponents();
     }
-    
-    private void initComponents(){
-        setTitle("CRUD RETO 5 - CLIENTE");
-        
+
+    private void initComponents() {
+        setTitle("CRUD RETO 5 - EQUIPO CHARMANDER");
+
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         
@@ -35,10 +24,9 @@ public class MainWindow extends JFrame {
         
         setSize(1040, 720);
         
-        frame.setLocationRelativeTo( null );
-        frame.setVisible(true);
+        setLocationRelativeTo(null);
         
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 }

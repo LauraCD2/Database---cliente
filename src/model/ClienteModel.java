@@ -11,6 +11,11 @@ public class ClienteModel {
     private Date fechaNto;
     
     /**
+     * Constructor without paramenters
+     */
+    public ClienteModel(){};
+    
+    /**
      * Constructor for internal management of our table ClienteModel
      * 
      * @param tag

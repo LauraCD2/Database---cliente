@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.ClienteModel;
@@ -136,8 +137,8 @@ public class ClienteDAO implements IClienteDAO {
             statement.setString(1, cliente.getTag());
             statement.setString(2, cliente.getNombre());
             statement.setString(3, cliente.getEmail());
-            statement.setLong(4, cliente.getCelular());
-            statement.setString(5, cliente.getClave());
+            statement.setObject(4, cliente.getCelular(), Types.INTEGER);
+            statement.setObject(5, cliente.getClave(), Types.VARCHAR);
             statement.setDate(6, cliente.getFechaNto());
 
             statement.setString(7, cliente.getTag());

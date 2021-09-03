@@ -1,51 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JPanel;
 
 /**
  *
- * @author LAURA CAMILA
+ * @author anfeo
  */
 public class ResultsPanel extends JPanel {
-   
-    private JTable      tblResults;
+    private JTable tblResultados;
     private JScrollPane jspPane;
-    
-    public ResultsPanel(){
+
+    public ResultsPanel() {
         initComponents();
     }
     
     private void initComponents(){
-        this.tblResults = new JTable();
-        this.tblResults.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        this.tblResultados = new JTable();
+        this.tblResultados.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
-        this.jspPane = new JScrollPane(this.tblResults);
+        this.jspPane = new JScrollPane(this.tblResultados);
         add(jspPane, BorderLayout.CENTER);
         
         setPreferredSize(new Dimension(1020, 800));
     }
 
-    /**
-     * @return the tblResults
-     */
-    public JTable getTblResults() {
-        return tblResults;
+    public JTable getTblResultados() {
+        return tblResultados;
     }
 
-    
-    /**
-     * @param tblResults the tblResults to set
-     */
-    public void setTblResults(JTable tblResults) {
-        this.tblResults = tblResults;
+    public void setTblResultados(JTable tblResultados) {
+        this.tblResultados = tblResultados;
     }
 }
