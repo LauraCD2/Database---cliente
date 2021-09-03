@@ -6,3 +6,5 @@ Let me know what do you think about it, I'm learning java.
   - In *Reto 4 - MISIÓN TIC 2022* you could find the "database" sample.
 
   - In *Reto 5 - MISIÓN TIC 2022* you could find the objectives and what is gonna be evaluated in this repo project.
+  
+  - In *READ* you could find the buttons funcionality description.
