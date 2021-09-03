@@ -29,7 +29,7 @@ public class ClienteDAO implements IClienteDAO {
             ResultSet result = statement.executeQuery(sql);
 
             while (result.next()) {
-                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getLong(4), result.getString(5), result.getDate(6));
+                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getObject(4), result.getString(5), result.getDate(6));
                 clientes.add(cliente);
             }
 
@@ -56,7 +56,7 @@ public class ClienteDAO implements IClienteDAO {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getLong(4), result.getString(5), result.getDate(6));
+                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getObject(4), result.getString(5), result.getDate(6));
                 clientes.add(cliente);
             }
 
@@ -83,13 +83,12 @@ public class ClienteDAO implements IClienteDAO {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getLong(4), result.getString(5), result.getDate(6));
+                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getObject(4), result.getString(5), result.getDate(6));
                 clientes.add(cliente);
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código: " + ex.getErrorCode() + "\nError: " + ex.getMessage());
-            ex.printStackTrace();
         }
 
         return clientes;
@@ -109,8 +108,8 @@ public class ClienteDAO implements IClienteDAO {
             statement.setString(1, cliente.getTag());
             statement.setString(2, cliente.getNombre());
             statement.setString(3, cliente.getEmail());
-            statement.setLong(4, cliente.getCelular());
-            statement.setString(5, cliente.getClave());
+            statement.setObject(4, cliente.getCelular(), Types.BIGINT);
+            statement.setObject(5, cliente.getClave(), Types.CHAR);
             statement.setDate(6, cliente.getFechaNto());
 
             int rowsInserted = statement.executeUpdate();
@@ -119,7 +118,8 @@ public class ClienteDAO implements IClienteDAO {
             }
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Código: " + ex.getErrorCode()
+                    + "\nError:" + ex.getMessage());
         }
     }
 
@@ -137,7 +137,7 @@ public class ClienteDAO implements IClienteDAO {
             statement.setString(1, cliente.getTag());
             statement.setString(2, cliente.getNombre());
             statement.setString(3, cliente.getEmail());
-            statement.setObject(4, cliente.getCelular(), Types.INTEGER);
+            statement.setObject(4, cliente.getCelular(), Types.BIGINT);
             statement.setObject(5, cliente.getClave(), Types.VARCHAR);
             statement.setDate(6, cliente.getFechaNto());
 

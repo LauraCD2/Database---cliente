@@ -6,7 +6,7 @@ public class ClienteModel {
     private String tag;
     private String nombre;
     private String email;
-    private long celular;
+    private Object celular;
     private String clave;
     private Date fechaNto;
     
@@ -25,7 +25,7 @@ public class ClienteModel {
      * @param clave
      * @param fechaNto 
      */
-    public ClienteModel(String tag, String nombre, String email, long celular, String clave, Date fechaNto) {
+    public ClienteModel(String tag, String nombre, String email, Object celular, String clave, Date fechaNto) {
         this.tag      = tag;
         this.nombre   = nombre;
         this.email    = email;
@@ -79,14 +79,14 @@ public class ClienteModel {
     /**
      * @return the celular
      */
-    public long getCelular() {
+    public Object getCelular() {
         return celular;
     }
 
     /**
      * @param celular the celular to set
      */
-    public void setCelular(long celular) {
+    public void setCelular(Object celular) {
         this.celular = celular;
     }
 

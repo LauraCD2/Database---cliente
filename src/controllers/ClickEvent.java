@@ -1,15 +1,16 @@
 package controllers;
 
 import access.ClienteDAO;
+import model.ClienteModel;
+import view.ControlsPanel;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import model.ClienteModel;
-import view.ControlsPanel;
+
+
 
 public class ClickEvent implements ActionListener {
 
@@ -30,29 +31,43 @@ public class ClickEvent implements ActionListener {
             this.controlsPanel.setTblResultados(clientes);
 
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnActualizar()) {
-            ArrayList<ClienteModel> clientes = clienteDAO.obtenerClientesPorTag(tagCliente);
-            this.controlsPanel.setTblResultados(clientes);
-
+            actualizarTabla();
+            
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnActualizarDatos()) {
-            int fila = this.controlsPanel.getTblResultados().getSelectedRow();
-            int columnas = this.controlsPanel.getTblResultados().getColumnCount();
+            try{
+                int fila = this.controlsPanel.getTblResultados().getSelectedRow();
+                int columnas = this.controlsPanel.getTblResultados().getColumnCount();
 
-            Object[] datos = new Object[6];
+                Object[] datos = new Object[6];
 
-            for (int i = 0; i < columnas; i++) {
-                datos[i] = this.controlsPanel.getTblResultados().getValueAt(fila, i);
-            }
-            try {
-                ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], (long) datos[3], (String) datos[5], (Date) datos[4]);
-                clienteDAO.actualizarCliente(cliente);
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");
+                for (int i = 0; i < columnas; i++) {
+                    datos[i] = this.controlsPanel.getTblResultados().getValueAt(fila, i);
+                }
+
+                try {
+                    ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], datos[3], (String) datos[5], (Date) datos[4]);
+                    clienteDAO.actualizarCliente(cliente);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");
+                }
+            } catch (ArrayIndexOutOfBoundsException ex){
+                JOptionPane.showMessageDialog(null, "¡Por favor seleccione una fila!");
             }
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnEliminar()) {
-            int fila = this.controlsPanel.getTblResultados().getSelectedRow();
-            String TagClienteEliminar = (String) this.controlsPanel.getTblResultados().getValueAt(fila, 0);
-            JOptionPane.showMessageDialog(null, TagClienteEliminar);
-            clienteDAO.eliminarClientePorTag(TagClienteEliminar);
+            try {
+                int fila = this.controlsPanel.getTblResultados().getSelectedRow();
+                String TagClienteEliminar = (String) this.controlsPanel.getTblResultados().getValueAt(fila, 0);
+                if (TagClienteEliminar != null) {
+                    int result = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea borrar este cliente?", null, JOptionPane.YES_NO_OPTION);
+                    if (result == JOptionPane.YES_OPTION) {
+                        clienteDAO.eliminarClientePorTag(TagClienteEliminar);
+                        actualizarTabla();
+                    }
+                }
+            } catch (ArrayIndexOutOfBoundsException ex){
+                JOptionPane.showMessageDialog(null, "¡Por favor seleccione una fila!");
+            }
+            
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnAgregar()) {
             int ultima = this.controlsPanel.getTblResultados().getRowCount() - 1;
 
@@ -67,17 +82,21 @@ public class ClickEvent implements ActionListener {
                 }
 
                 try {
-                    ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], (long) datos[3], (String) datos[5], (Date) datos[4]);
+                    ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], datos[3], (String) datos[5], Date.valueOf((String) datos[4]));
                     clienteDAO.agregarCliente(cliente);
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");
-                    ex.printStackTrace();
                 }
 
             } else {
                 JOptionPane.showMessageDialog(null, "¡Por favor ingrese todos los campos!");
             }
         }
+    }
+    
+    private void actualizarTabla(){
+        ArrayList<ClienteModel> clientes = clienteDAO.obtenerClientesPorTag(tagCliente);
+        this.controlsPanel.setTblResultados(clientes);
     }
 }
