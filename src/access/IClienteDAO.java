@@ -17,8 +17,6 @@ public interface IClienteDAO {
 
     public ArrayList<ClienteModel> obtenerClientesPorTag(String tag);
 
-    public ArrayList<ClienteModel> obtenerClientesPorCorreo(String correo);
-
     public void agregarCliente(ClienteModel cliente);
 
     public void actualizarCliente(ClienteModel cliente);

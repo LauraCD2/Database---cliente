@@ -45,14 +45,24 @@ public class ClickEvent implements ActionListener {
                 }
 
                 try {
+                    //If it's a Empty String we set it null
+                    if (datos[3].equals("")) {
+                        datos[3] = null;
+                    }
+                    if (datos[5].equals("")) {
+                        datos[5] = null;
+                    }
+                    
                     ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], datos[3], (String) datos[5], (Date) datos[4]);
                     clienteDAO.actualizarCliente(cliente);
+                    actualizarTabla();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");
                 }
             } catch (ArrayIndexOutOfBoundsException ex){
                 JOptionPane.showMessageDialog(null, "¡Por favor seleccione una fila!");
             }
+            
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnEliminar()) {
             try {
                 int fila = this.controlsPanel.getTblResultados().getSelectedRow();
@@ -84,6 +94,7 @@ public class ClickEvent implements ActionListener {
                 try {
                     ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], datos[3], (String) datos[5], Date.valueOf((String) datos[4]));
                     clienteDAO.agregarCliente(cliente);
+                    actualizarTabla();
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");

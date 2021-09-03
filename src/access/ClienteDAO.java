@@ -13,19 +13,19 @@ import utils.ConnectionDB;
 
 public class ClienteDAO implements IClienteDAO {
 
-    private Connection coneccion = null;
+    private Connection conexion = null;
 
     @Override
     public ArrayList<ClienteModel> obtenerClientes() {
         ArrayList<ClienteModel> clientes = new ArrayList<>();
 
         try {
-            if (coneccion == null) {
-                coneccion = ConnectionDB.getConnection();
+            if (conexion == null) {
+                conexion = ConnectionDB.getConnection();
             }
 
             String sql = "SELECT cli_tag AS \"TAG\", cli_nombre AS \"NOMBRE\", cli_email AS \"EMAIL\", cli_celular AS \"TELEFONO\", cli_clave AS \"CLAVE\", cli_fecha_nto AS \"NACIMIENTO\" FROM cliente;";
-            Statement statement = coneccion.createStatement();
+            Statement statement = conexion.createStatement();
             ResultSet result = statement.executeQuery(sql);
 
             while (result.next()) {
@@ -45,40 +45,13 @@ public class ClienteDAO implements IClienteDAO {
         ArrayList<ClienteModel> clientes = new ArrayList<>();
 
         try {
-            if (coneccion == null) {
-                coneccion = ConnectionDB.getConnection();
+            if (conexion == null) {
+                conexion = ConnectionDB.getConnection();
             }
 
             String sql = "SELECT cli_tag AS \"TAG\", cli_nombre AS \"NOMBRE\", cli_email AS \"EMAIL\", cli_celular AS \"TELEFONO\", cli_clave AS \"CLAVE\", cli_fecha_nto AS \"NACIMIENTO\" FROM cliente WHERE cli_tag LIKE ?;";
-            PreparedStatement statement = coneccion.prepareStatement(sql);
+            PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, "%" + tag + "%");
-
-            ResultSet result = statement.executeQuery();
-
-            while (result.next()) {
-                ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getObject(4), result.getString(5), result.getDate(6));
-                clientes.add(cliente);
-            }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Código: " + ex.getErrorCode() + "\nError: " + ex.getMessage());
-        }
-
-        return clientes;
-    }
-
-    @Override
-    public ArrayList<ClienteModel> obtenerClientesPorCorreo(String correo) {
-        ArrayList<ClienteModel> clientes = new ArrayList<>();
-
-        try {
-            if (coneccion == null) {
-                coneccion = ConnectionDB.getConnection();
-            }
-
-            String sql = "SELECT cli_tag AS \"TAG\", cli_nombre AS \"NOMBRE\", cli_email AS \"EMAIL\", cli_celular AS \"TELEFONO\", cli_clave AS \"CLAVE\", cli_fecha_nto AS \"NACIMIENTO\" FROM cliente WHERE cli_email LIKE ?;";
-            PreparedStatement statement = coneccion.prepareStatement(sql);
-            statement.setString(1, "%" + correo + "%");
 
             ResultSet result = statement.executeQuery();
 
@@ -97,14 +70,14 @@ public class ClienteDAO implements IClienteDAO {
     @Override
     public void agregarCliente(ClienteModel cliente) {
         try {
-            if (coneccion == null) {
-                coneccion = ConnectionDB.getConnection();
+            if (conexion == null) {
+                conexion = ConnectionDB.getConnection();
             }
 
             String sql = "INSERT INTO cliente(cli_tag, cli_nombre, cli_email, cli_celular, cli_clave, cli_fecha_nto) "
                     + "VALUES (?, ?, ?, ?, ?, ?);";
 
-            PreparedStatement statement = coneccion.prepareStatement(sql);
+            PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, cliente.getTag());
             statement.setString(2, cliente.getNombre());
             statement.setString(3, cliente.getEmail());
@@ -126,13 +99,13 @@ public class ClienteDAO implements IClienteDAO {
     @Override
     public void actualizarCliente(ClienteModel cliente) {
         try {
-            if (coneccion == null) {
-                coneccion = ConnectionDB.getConnection();
+            if (conexion == null) {
+                conexion = ConnectionDB.getConnection();
             }
 
             String sql = "UPDATE cliente SET cli_tag = ?, cli_nombre = ?, cli_email = ?, cli_celular = ?, cli_clave = ?, "
                     + "cli_fecha_nto = ? WHERE cli_tag LIKE ?;";
-            PreparedStatement statement = coneccion.prepareStatement(sql);
+            PreparedStatement statement = conexion.prepareStatement(sql);
 
             statement.setString(1, cliente.getTag());
             statement.setString(2, cliente.getNombre());
@@ -156,12 +129,12 @@ public class ClienteDAO implements IClienteDAO {
     @Override
     public void eliminarClientePorTag(String tag) {
         try {
-            if (coneccion == null) {
-                coneccion = ConnectionDB.getConnection();
+            if (conexion == null) {
+                conexion = ConnectionDB.getConnection();
             }
 
             String sql = "DELETE FROM cliente WHERE cli_tag LIKE ?;";
-            PreparedStatement statement = coneccion.prepareStatement(sql);
+            PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, tag);
             int rowsDeleted = statement.executeUpdate();
 
