@@ -25,7 +25,8 @@ public class ConnectionDB {
             String port       = (String)jsonObject.get("dp_port");
             String username   = (String)jsonObject.get("db_user");
             String password   = (String)jsonObject.get("db_pssword");
-            String schemaName = "basedatosreto4";
+            String schemaName = (String)jsonObject.get("db_schemaName");
+            
             String dbURL      = "jdbc:mysql://"+host+":"+port+"/"+schemaName;
             
             conn = DriverManager.getConnection(dbURL, username, password);
