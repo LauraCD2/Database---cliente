@@ -10,8 +10,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
-
 public class ClickEvent implements ActionListener {
 
     ClienteDAO clienteDAO = new ClienteDAO();
@@ -32,9 +30,9 @@ public class ClickEvent implements ActionListener {
 
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnActualizar()) {
             actualizarTabla();
-            
+
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnActualizarDatos()) {
-            try{
+            try {
                 int fila = this.controlsPanel.getTblResultados().getSelectedRow();
                 int columnas = this.controlsPanel.getTblResultados().getColumnCount();
 
@@ -46,23 +44,28 @@ public class ClickEvent implements ActionListener {
 
                 try {
                     //If it's a Empty String we set it null
-                    if (datos[3].equals("")) {
-                        datos[3] = null;
+                    if (datos[3] != null) {
+                        if (datos[3].equals("")) {
+                            datos[3] = null;
+                        }
                     }
-                    if (datos[5].equals("")) {
-                        datos[5] = null;
+                    if (datos[5] != null) {
+                        if (datos[5].equals("")) {
+                            datos[5] = null;
+                        }
                     }
-                    
+
                     ClienteModel cliente = new ClienteModel((String) datos[0], (String) datos[1], (String) datos[2], datos[3], (String) datos[5], (Date) datos[4]);
                     clienteDAO.actualizarCliente(cliente);
                     actualizarTabla();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");
+                    ex.printStackTrace();
                 }
-            } catch (ArrayIndexOutOfBoundsException ex){
+            } catch (ArrayIndexOutOfBoundsException ex) {
                 JOptionPane.showMessageDialog(null, "¡Por favor seleccione una fila!");
             }
-            
+
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnEliminar()) {
             try {
                 int fila = this.controlsPanel.getTblResultados().getSelectedRow();
@@ -74,10 +77,10 @@ public class ClickEvent implements ActionListener {
                         actualizarTabla();
                     }
                 }
-            } catch (ArrayIndexOutOfBoundsException ex){
+            } catch (ArrayIndexOutOfBoundsException ex) {
                 JOptionPane.showMessageDialog(null, "¡Por favor seleccione una fila!");
             }
-            
+
         } else if (actionEvent.getSource() == this.controlsPanel.getBtnAgregar()) {
             int ultima = this.controlsPanel.getTblResultados().getRowCount() - 1;
 
@@ -105,8 +108,8 @@ public class ClickEvent implements ActionListener {
             }
         }
     }
-    
-    private void actualizarTabla(){
+
+    private void actualizarTabla() {
         ArrayList<ClienteModel> clientes = clienteDAO.obtenerClientesPorTag(tagCliente);
         this.controlsPanel.setTblResultados(clientes);
     }

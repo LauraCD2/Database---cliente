@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -13,6 +15,8 @@ public class MainWindow extends JFrame {
 
     private void initComponents() {
         setTitle("CRUD RETO 5 - EQUIPO CHARMANDER");
+        setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));  
+
         
         try{
             setUIFont(new javax.swing.plaf.FontUIResource("Tahoma",Font.PLAIN,16));
