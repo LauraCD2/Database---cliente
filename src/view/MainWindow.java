@@ -15,7 +15,7 @@ public class MainWindow extends JFrame {
 
     private void initComponents() {
         setTitle("CRUD RETO 5 - EQUIPO CHARMANDER");
-        setIconImage(Toolkit.getDefaultToolkit().getImage("icon.png"));  
+        setIconImage(Toolkit.getDefaultToolkit().getImage("src/images/icon.png"));  
 
         
         try{
