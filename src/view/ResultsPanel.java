@@ -31,7 +31,7 @@ public class ResultsPanel extends JPanel {
         //Cambiamos el color de la letra del header a blanco
         this.tblResultados.getTableHeader().setForeground(Color.WHITE);
         
-        this.tblResultados.setBackground(new Color(250,250,250));
+        this.tblResultados.setBackground(new Color(250, 250, 250));
         
         //We set the height of the rows
         this.tblResultados.setRowHeight(25);

@@ -1,4 +1,4 @@
- 
+
 import view.MainWindow;
 
 public class CrudReto5Ejecutable {

@@ -43,7 +43,7 @@ public class ClickEvent implements ActionListener {
                 }
 
                 try {
-                    //If it's a Empty String we set it null
+                    //If it's an Empty String we set it null
                     if (datos[3] != null) {
                         if (datos[3].equals("")) {
                             datos[3] = null;
@@ -60,7 +60,6 @@ public class ClickEvent implements ActionListener {
                     actualizarTabla();
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "¡Por favor, verifique los datos ingresados!");
-                    ex.printStackTrace();
                 }
             } catch (ArrayIndexOutOfBoundsException ex) {
                 JOptionPane.showMessageDialog(null, "¡Por favor seleccione una fila!");
@@ -92,6 +91,17 @@ public class ClickEvent implements ActionListener {
 
                 for (int i = 0; i < columnas; i++) {
                     datos[i] = this.controlsPanel.getTblResultados().getValueAt(ultima, i);
+                }
+
+                if (datos[3] != null) {
+                    if (datos[3].equals("")) {
+                        datos[3] = null;
+                    }
+                }
+                if (datos[5] != null) {
+                    if (datos[5].equals("")) {
+                        datos[5] = null;
+                    }
                 }
 
                 try {

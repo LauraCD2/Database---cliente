@@ -53,7 +53,7 @@ public class ClienteDAO implements IClienteDAO {
             PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, "%" + tag + "%");
 
-            ResultSet result = statement.executeQuery();
+            ResultSet result = statement.executeQuery(); 
 
             while (result.next()) {
                 ClienteModel cliente = new ClienteModel(result.getString(1), result.getString(2), result.getString(3), result.getObject(4), result.getString(5), result.getDate(6));

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -30,9 +29,6 @@ public class ControlsPanel extends JPanel {
     private JComboBox<String> cbxBuscarPor;
     private JTable tblResultados;
     private JTextField txtCuadroBusqueda;
-    private JLabel relleno;
-    private JLabel relleno2;
-    private JLabel relleno3;
     
     
     /**
@@ -49,6 +45,7 @@ public class ControlsPanel extends JPanel {
     
     private void initComponents(){
         setBorder(BorderFactory.createLineBorder(Color.black));
+        
         setLayout(new GridLayout(3, 2, 15, 15));
         InitialData initialData = new InitialData();
          

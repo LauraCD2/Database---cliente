@@ -24,7 +24,7 @@ public class ConnectionDB {
             String host       = (String)jsonObject.get("db_ip");
             String port       = (String)jsonObject.get("dp_port");
             String username   = (String)jsonObject.get("db_user");
-            String password   = (String)jsonObject.get("db_pssword");
+            String password   = (String)jsonObject.get("db_password");
             String schemaName = (String)jsonObject.get("db_schemaName");
             
             String dbURL      = "jdbc:mysql://"+host+":"+port+"/"+schemaName;
